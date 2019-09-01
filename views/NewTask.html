@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+      <meta charset = "UTF-8" />
+      <meta name = "viewport" content = "width=device-width, initial-scale =1.0"/>
+      <link rel="stylesheet" href="stylesheet.css"/>
+  </head>
+<body>
+     <h1> Newtask Page </h1>
+
+    <h2>
+    <a href = "/">Home</a> 
+    <a href = "/updateTask">updateTask</a>
+    <a href = "/listTasks">List Tasks</a>
+    <a href ="/deleteTask">Delete Task</a>
+   </h2>
+
+    <form action= "/addTask" method = "POST">
+        
+        <label> Task Name</label>
+        <input type = "text" method="POST" name="taskname"/>
+      
+
+        <label>Due Date</label>
+        <input type = "text" method="POST" name= "dueDate"/>
+     
+     
+        <label>Task Status</label>
+        <select type ="text" method="POST" name="taskstatus" multiple>
+          <option value ="inProgress">In Progress</option>
+          <option value ="complete"> Complete</option>
+        </select>
+     
+        
+        <label>Task Description</label>
+        <input type = "text" method="POST" name= "taskDesc" />
+   
+
+        <label>Assign To</label>
+        <input type="text" method="POST" name="assignTo" />
+  
+      <input type="submit" value="Submit" /> </br>
+   </form>
+    
+</body>
+
+</html>

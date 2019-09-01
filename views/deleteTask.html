@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+      <meta charset = "UTF-8" />
+      <meta name = "viewport" content = "width=device-width, initial-scale =1.0"/>
+      <link rel="stylesheet" href="stylesheet.css"/>
+  </head>
+
+<body>
+     <h1>Delete Task</h1>
+
+        <h2>
+            <a href="/">Home</a>
+            <a href="/listTasks">List Tasks</a>
+            <a href="/updateTask">updateTask</a>
+            <a href="/NewTask">New Task</a>
+        </h2>
+
+        <form action="/deleteTask" method="POST">
+         User Old ID
+         
+         <input type="text" method="POST" name="taskID"/></br>
+
+        <input type="submit" value="Submit" /> </br>
+        </form>
+
+        <form action="/deletetaskdatecompleted" method="POST">
+         
+           Delete Completed Task
+<!--         
+          <select type = "text" name = "taskstatus" multiple>
+              <option value ="inProgress">In Progress</option>
+              <option value ="complete"> Complete</option>        
+          </select> --> -->
+         <input type="submit" value="Submit" /> </br>
+        </form>
+  </body>
+</html>

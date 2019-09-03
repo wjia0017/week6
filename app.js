@@ -63,7 +63,7 @@ app.post('/addTask', function (req, res) {
 });
 
 function getNewId() {
-    return (Math.floor(100000 + Math.random() * 900000));
+    return (Math.floor(100 + Math.random() * 900));
 }
 
 app.get('/deleteTask', function(req,res){
@@ -105,6 +105,18 @@ app.post('/updateTask', function(req,res){
     db.collection("week5").updateOne({taskID:parseInt(userDatails.taskID)},  {$set: {taskstatus: req.body.taskstatus}}, function (err, result){
         res.redirect('/listTasks');
     });
-   
 });
+app.get("/findtasks", function(req,res){
+    res.sendFile(__dirname +'/views/findtasks.html');
+})
+
+app.post('/findtasks', function(req,res){
+   let query = {taskID: {$gte: 30, $lte: 700} };
+   db.collection("week5").find(query).toArray(function (err, result){
+       if(err) throw err;
+       console.log(result);
+        res.redirect('/listTasks');
+   })
+
+})
 

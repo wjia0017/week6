@@ -1,7 +1,6 @@
 var express = require("express");
 const mongodb = require('mongodb');
 let bodyParser = require('body-parser');
-const morgan = require('morgan');
 
 var app = express();
 
@@ -17,8 +16,6 @@ app.set(express.static('view'));
 app.use(bodyParser.urlencoded({
      extended: false
      }));
-
-app.use(morgan('common'));
 
 app.listen(8080);
 console.log("Sever running at http://localhost:8080");

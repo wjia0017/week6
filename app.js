@@ -1,6 +1,7 @@
 var express = require("express");
 const mongodb = require('mongodb');
 let bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 var app = express();
 
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({
      extended: false
      }));
 
+app.use(morgan('common'));
+
 app.listen(8080);
 console.log("Sever running at http://localhost:8080");
 
@@ -26,8 +29,7 @@ const MongoClient = mongodb.MongoClient;
 //connection URL
 const url = "mongodb://localhost:27017/";
 
-let db;
-
+let db = null;
 MongoClient.connect(url, {useNewUrlParser:true},
     function (err, client) {
         if (err) {

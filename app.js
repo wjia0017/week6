@@ -1,6 +1,7 @@
 var express = require("express");
 const mongodb = require('mongodb');
 let bodyParser = require('body-parser');
+let uniformrl = require('url');
 
 var app = express();
 
@@ -106,17 +107,37 @@ app.post('/updateTask', function(req,res){
         res.redirect('/listTasks');
     });
 });
-app.get("/findtasks", function(req,res){
-    res.sendFile(__dirname +'/views/findtasks.html');
-})
+// app.get("/findtasks", function(req,res){
+//     res.sendFile(__dirname +'/views/findtasks.html');
+// })
 
-app.post('/findtasks', function(req,res){
-   let query = {taskID: {$gte: 30, $lte: 700} };
-   db.collection("week5").find(query).toArray(function (err, result){
-       if(err) throw err;
-       console.log(result);
-        res.redirect('/listTasks');
+app.get('/findtaskas/:new1/:new2', function(req,res){
+    // let curUrl = req.url;
+    // let q = url.parse(curUrl, true).query;
+    let taskID = parseInt(req.params.new1);
+    let taskID1 = parseInt(req.params.new2);
+    
+
+    let query = {taskID: {$gte: taskID, $lte: taskID1} };
+    db.collection("week5").find(query).toArray(function (err, result){
+       if(err){
+           res.send("not exist");
+       }
+      else{
+        console.log("!",taskID, taskID1. result)
+          res.render("listTasks.html", {tasks: result});
+
+      }
+     
    })
+//    function generateList() {
+//     let st = 'taskID  taskname  dueDate taskDesc assignTo taskstatus  </br>';
+//     for (let i = 0; i < tasks.length; i++) {
+//         st += tasks[i].taskID + ' | ' + task[i].taskname + ' | ' + tasks[i].dueDate + tasks[i].taskDesc + tasks[i].assignTo + tasks[i].taskstatus + '</br>';
+//     }
+//     return st;
+// }
+
 
 })
 
